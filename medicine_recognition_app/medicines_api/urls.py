@@ -5,7 +5,7 @@ from django.urls import (
 
 from rest_framework.routers import DefaultRouter
 
-from medicines_api import views
+from . import views
 
 router = DefaultRouter()
 router.register('medicine', views.MedicineViewset)
@@ -13,4 +13,5 @@ app_name = 'medicines_api'
 
 urlpatterns = [
     path('', include(router.urls)),
+    path('ocr/', views.OCRView.as_view(), name='ocr'),
 ]

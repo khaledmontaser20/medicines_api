@@ -14,7 +14,7 @@ database with tables"""
 
 class Command(BaseCommand):
     # Show this when the user types help
-    help = "Loads data from data_clean.csv"
+    help = "Loads data from Medicine.csv"
 
     def handle(self, *args, **options):
 
@@ -28,7 +28,6 @@ class Command(BaseCommand):
         print("Loading medicines data")
 
         # Code to load the data into database
-        for row in DictReader(open('./data_clean.csv', encoding="utf8")):
-            medicine = Medicine(category_name=row['category_name'], company=row['company'], effective_material=row['effective_material'],
-                                en_name=row['en_name'], price=row['price'], usage=row['usage'], ar_name=row['ar_name'])
+        for row in DictReader(open('./Medicine.csv', encoding="utf8")):
+            medicine = Medicine(en_name=row['en_name'], image=row['img_link'], category_name=row['category_name'], company=row['company'], effective_material=row['effective_material'], price=row['price'], usage=row['usage'], ar_name=row['ar_name'])
             medicine.save()
