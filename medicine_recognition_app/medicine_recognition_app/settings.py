@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'corsheaders',
     'rest_framework',
     'medicines_api',
-    'drf_spectacular',
+    # 'drf_spectacular',
+    'drf_yasg',
 ]
 
 MIDDLEWARE = [

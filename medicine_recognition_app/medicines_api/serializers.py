@@ -18,6 +18,7 @@ class MedicineSerializer(serializers.ModelSerializer):
             image_url = unquote(obj.image.url)
             if image_url.startswith('/media/'):
                 image_url = image_url[len('/media/'):]
+                image_url = image_url.replace(":/", "://")
             return image_url
         return None
 
