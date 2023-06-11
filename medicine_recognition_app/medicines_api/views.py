@@ -6,6 +6,7 @@ from .serializers import MedicineSerializer
 from rest_framework.response import Response
 import easyocr
 from .serializers import OCRSerializer
+from rest_framework import filters
 
 # Create your views here.
 
@@ -13,6 +14,10 @@ from .serializers import OCRSerializer
 class MedicineViewset(viewsets.ModelViewSet):
     queryset = Medicine.objects.all().order_by("id")
     serializer_class = MedicineSerializer
+    filter_backends = [filters.SearchFilter]
+    search_fields = ['en_name', 'ar_name']
+
+
 
 from io import BytesIO
 from PIL import Image
